@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <include name="base-q.xml"/>
-  <remote name="phh" fetch="https://github.com/phhusson/" revision="android-10.0.0_r41-phh" />
+  <remote name="phh" fetch="https://github.com/phhusson/" revision="android-10.0.0_r9-phh" />
   <remote name="b2g-gsi" fetch="https://github.com/b2g-gsi/" revision="gsi_gonk_android-10.0.0_r11" />
   
   <!--   Add back from AOSP manifest -->
