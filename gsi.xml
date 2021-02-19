@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <include name="base-q.xml"/>
-  <remote name="phh" fetch="https://github.com/phhusson/" />
-  <remote name="b2g-gsi" fetch="https://github.com/b2g-gsi/"/>
+  <remote name="phh" fetch="https://github.com/phhusson/" revision="android-10.0.0_r41-phh" />
+  <remote name="b2g-gsi" fetch="https://github.com/b2g-gsi/" revision="gsi_gonk_android-10.0.0_r11" />
   
-  <!-- MOD B2G -->
+  <!--  replace repo -->
   <remove-project name="platform_build"/>
   <remove-project name="platform_system_vold"/>
   <remove-project name="platform_system_core"/>
-  <!--   <remove-project name="platform_system_sepolicy"/> -->
-  <project groups="kai" name="platform_build" path="build/make" remote="b2g-gsi" revision="gsi_gonk_android-10.0.0_r11">
+  <remove-project name="platform/bionic" />
+  <remove-project name="platform/bootable/recovery" />
+  <remove-project name="platform/frameworks/native" />
+  <remove-project name="platform/frameworks/base" />
+  <remove-project name="platform/frameworks/av" />
+  <remove-project name="platform/frameworks/opt/net/wifi" />
+  <remove-project name="platform/system/bpf" />
+  <remove-project name="platform/system/sepolicy" />
+  <remove-project name="platform/system/libvintf" />
+  <remove-project name="platform/system/netd" />
+  <remove-project name="platform/external/selinux" />
+  <remove-project name="platform/external/skia" />
+  <remove-project name="platform/packages/services/Telephony" />
+  <remove-project name="platform/frameworks/opt/telephony" />
+
+  <!-- use phh's repo -->
+  <project path="bionic" name="platform_bionic" remote="phh" />
+  <project path="bootable/recovery" name="platform_bootable_recovery" remote="phh" />
+  <project path="frameworks/native" name="platform_frameworks_native" remote="phh" />  
+  <project path="frameworks/base" name="platform_frameworks_base" remote="phh" />
+  <project path="frameworks/av" name="platform_frameworks_av" remote="phh" />
+  <project path="frameworks/opt/net/wifi" name="platform_frameworks_opt_net_wifi" remote="phh" />
+  <project path="system/bpf" name="platform_system_bpf" remote="phh" />  
+  <project path="system/sepolicy" name="platform_system_sepolicy" remote="phh" />
+  <project path="system/libvintf" name="platform_system_libvintf" remote="phh" />
+  <project path="system/netd" name="platform_system_netd" remote="phh" />
+  <project path="external/selinux" name="platform_external_selinux" remote="phh" /> 
+  <project path="external/skia" name="platform_external_skia" remote="phh" />
+  <project path="packages/services/Telephony" name="platform_packages_services_Telephony" remote="phh" />
+  <project path="frameworks/opt/telephony" name="platform_frameworks_opt_telephony" remote="phh" />
+
+  <!-- add phh's patch -->
+  <project groups="kai" name="platform_build" path="build/make" remote="b2g-gsi">
     <copyfile src="core/root.mk" dest="Makefile"/>
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
     <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default"/>
@@ -18,23 +49,20 @@
     <linkfile src="target" dest="build/target"/>
     <linkfile src="tools" dest="build/tools"/>
   </project>
-  <project name="platform_system_core" path="system/core" remote="b2g-gsi" revision="gsi_gonk_android-10.0.0_r11"/>
-  <project name="platform_system_vold" path="system/vold" remote="b2g-gsi" revision="gsi_gonk_android-10.0.0_r11"/>
-  <!--   <project groups="kai" name="platform_system_sepolicy" path="system/sepolicy" remote="b2g-gsi" revision="gsi_gonk_android-10.0.0_r11"/> -->
-  <project path="device/phh/treble" name="device_phh_treble" remote="b2g-gsi" revision="gonk-android-10.0" />
+  <project name="platform_system_core" path="system/core" remote="b2g-gsi" />
+  <project name="platform_system_vold" path="system/vold" remote="b2g-gsi" />
   
-  <!-- add gsi -->
-  <project path="device/generic/common" name="device/generic/common" groups="pdk" />
-  <project path="vendor/hardware_overlay" name="vendor_hardware_overlay" remote="phh" revision="pie" />
-  <project path="vendor/vndk" name="vendor_vndk" remote="phh" revision="android-10.0" />
-  <project path="vendor/vndk-tests" name="vendor_vndk-tests" remote="phh" revision="master" />
-  <project path="vendor/interfaces" name="vendor_interfaces" remote="phh" revision="pie" />
-  <project path="patcher" name="patcher" remote="b2g-gsi" revision="repo" />
+ <!-- add phh's GSI -->
+ <project path="device/phh/treble" name="device_phh_treble" remote="b2g-gsi" revision="gonk-android-10.0" />
+ <project path="vendor/hardware_overlay" name="vendor_hardware_overlay" remote="phh" revision="pie" />
+ <project path="vendor/vndk" name="vendor_vndk" remote="phh" revision="android-10.0" />
+ <project path="vendor/vndk-tests" name="vendor_vndk-tests" remote="phh" revision="master" />
+ <project path="vendor/interfaces" name="vendor_interfaces" remote="phh" revision="pie" />
+ <project path="device/generic/common" name="device/generic/common" groups="pdk" />
   
   <!-- remain until gsi is working well-->
   <project path="prebuilts/abi-dumps/ndk" name="platform/prebuilts/abi-dumps/ndk" groups="pdk-fs" clone-depth="1" />
   <project path="prebuilts/abi-dumps/vndk" name="platform/prebuilts/abi-dumps/vndk" groups="pdk-fs" clone-depth="1" />
-  <project path="prebuilts/android-emulator" name="platform/prebuilts/android-emulator" groups="pdk-fs" clone-depth="1" />
   <project path="prebuilts/vndk/v27" name="platform/prebuilts/vndk/v27" groups="pdk" clone-depth="1" />
   <project path="prebuilts/vndk/v28" name="platform/prebuilts/vndk/v28" groups="pdk" clone-depth="1" />
 </manifest>
