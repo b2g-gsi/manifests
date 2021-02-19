@@ -4,6 +4,14 @@
   <remote name="phh" fetch="https://github.com/phhusson/" revision="android-10.0.0_r41-phh" />
   <remote name="b2g-gsi" fetch="https://github.com/b2g-gsi/" revision="gsi_gonk_android-10.0.0_r11" />
   
+  <!--   Add back from AOSP manifest -->
+  <project path="device/generic/common" name="device/generic/common" groups="pdk" />
+  <project path="prebuilts/abi-dumps/ndk" name="platform/prebuilts/abi-dumps/ndk" groups="pdk-fs" clone-depth="1" />
+  <project path="prebuilts/abi-dumps/vndk" name="platform/prebuilts/abi-dumps/vndk" groups="pdk-fs" clone-depth="1" />
+  <project path="prebuilts/vndk/v27" name="platform/prebuilts/vndk/v27" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/vndk/v28" name="platform/prebuilts/vndk/v28" groups="pdk" clone-depth="1" />
+  <project path="prebuilts/ndk" name="platform/prebuilts/ndk" groups="pdk" clone-depth="1" />
+  
   <!--  replace repo -->
   <remove-project name="platform_build"/>
   <remove-project name="platform_system_vold"/>
@@ -39,7 +47,7 @@
   <project path="packages/services/Telephony" name="platform_packages_services_Telephony" remote="phh" />
   <project path="frameworks/opt/telephony" name="platform_frameworks_opt_telephony" remote="phh" />
 
-  <!-- add phh's patch -->
+  <!-- add phh's patch based on kaiostech's repos -->
   <project groups="kai" name="platform_build" path="build/make" remote="b2g-gsi">
     <copyfile src="core/root.mk" dest="Makefile"/>
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
@@ -58,12 +66,5 @@
  <project path="vendor/vndk" name="vendor_vndk" remote="phh" revision="android-10.0" />
  <project path="vendor/vndk-tests" name="vendor_vndk-tests" remote="phh" revision="master" />
  <project path="vendor/interfaces" name="vendor_interfaces" remote="phh" revision="pie" />
- <project path="device/generic/common" name="device/generic/common" groups="pdk" />
   
-  <!-- remain until gsi is working well-->
-  <project path="prebuilts/abi-dumps/ndk" name="platform/prebuilts/abi-dumps/ndk" groups="pdk-fs" clone-depth="1" />
-  <project path="prebuilts/abi-dumps/vndk" name="platform/prebuilts/abi-dumps/vndk" groups="pdk-fs" clone-depth="1" />
-  <project path="prebuilts/vndk/v27" name="platform/prebuilts/vndk/v27" groups="pdk" clone-depth="1" />
-  <project path="prebuilts/vndk/v28" name="platform/prebuilts/vndk/v28" groups="pdk" clone-depth="1" />
-  <project path="prebuilts/ndk" name="platform/prebuilts/ndk" groups="pdk" clone-depth="1" />
 </manifest>
