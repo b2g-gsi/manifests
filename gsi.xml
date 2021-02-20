@@ -2,9 +2,13 @@
 <manifest>
   <include name="base-q.xml"/>
   <remote name="phh" fetch="https://github.com/phhusson" />
+  
+  <!--   
+    use "b2g_gsi" organization to temporarily store repos which are "android-10.0.0_r11" （not android10-gsi）branch and add phh's GSI patches
+  -->
   <remote name="b2g_gsi" fetch="https://github.com/b2g-gsi" revision="gonk_android-10.0.0_r11" />
   
-  <!--   Add back from AOSP manifest -->
+  <!--   Add back some repos from AOSP manifest -->
   <project path="device/generic/common" name="device/generic/common" groups="pdk" />
   <project path="prebuilts/abi-dumps/ndk" name="platform/prebuilts/abi-dumps/ndk" groups="pdk-fs" clone-depth="1" />
   <project path="prebuilts/abi-dumps/vndk" name="platform/prebuilts/abi-dumps/vndk" groups="pdk-fs" clone-depth="1" />
@@ -26,9 +30,8 @@
   <!--   <remove-project name="platform/system/netd" /> -->
   <remove-project name="platform/external/selinux" />
   <remove-project name="platform/external/skia" />
-  <!--   <remove-project name="platform/packages/services/Telephony" /> -->
 
-  <!-- add phh's patches based on AOSP's repos -->
+  <!-- add phh's patches based on AOSP repos of "android-10.0.0_r11" branch -->
   <project path="bionic" name="platform_bionic" remote="b2g_gsi" />
   <!--   <project path="bootable/recovery" name="platform_bootable_recovery" remote="b2g_gsi" /> -->
   <project path="frameworks/native" name="platform_frameworks_native" remote="b2g_gsi" />  
@@ -44,7 +47,7 @@
   <!-- X  <project path="packages/services/Telephony" name="platform_packages_services_Telephony" remote="b2g_gsi" /> -->
 
 
-  <!-- add phh's patches based on kaiostech's repos -->
+  <!-- add phh's patches based on kaiostech's repos of "gonk_android-10.0.0_r11" branch -->
   <project groups="kai" name="platform_build" path="build/make" remote="b2g_gsi" revision="gsi_gonk_android-10.0.0_r11" >
     <copyfile src="core/root.mk" dest="Makefile"/>
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
@@ -57,7 +60,7 @@
   <project name="platform_system_core" path="system/core" remote="b2g_gsi" revision="gsi_gonk_android-10.0.0_r11" />
   <project name="platform_system_vold" path="system/vold" remote="b2g_gsi" revision="gsi_gonk_android-10.0.0_r11" />
   
- <!-- add phh's GSI -->
+ <!-- add essential phh's GSI repos -->
  <project path="device/phh/treble" name="device_phh_treble" remote="b2g_gsi" revision="gonk-android-10.0" />
  <project path="vendor/hardware_overlay" name="vendor_hardware_overlay" remote="phh" revision="pie" />
  <project path="vendor/vndk" name="vendor_vndk" remote="phh" revision="android-10.0" />
