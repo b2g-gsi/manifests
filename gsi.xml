@@ -2,7 +2,7 @@
 <manifest>
   <include name="base-q.xml"/>
   <remote name="phh" fetch="https://github.com/phhusson/" revision="android-10.0.0_r9-phh" />
-  <remote name="b2g-gsi" fetch="https://github.com/b2g-gsi/" revision="gsi_gonk_android-10.0.0_r11" />
+  <remote name="b2g_gsi" fetch="https://github.com/b2g-gsi/" revision=" gonk_android-10.0.0_r11" />
   
   <!--   Add back from AOSP manifest -->
   <project path="device/generic/common" name="device/generic/common" groups="pdk" />
@@ -24,27 +24,25 @@
   <remove-project name="platform/frameworks/opt/telephony" />
   <remove-project name="platform/system/bpf" />
   <remove-project name="platform/system/sepolicy" />
-  <remove-project name="platform/system/libvintf" />
   <remove-project name="platform/system/netd" />
   <remove-project name="platform/external/selinux" />
   <remove-project name="platform/external/skia" />
   <remove-project name="platform/packages/services/Telephony" />
 
   <!-- add phh's patches based on AOSP's repos -->
-  <project path="bionic" name="platform_bionic" remote="phh" />
-  <project path="bootable/recovery" name="platform_bootable_recovery" remote="phh" />
-  <project path="frameworks/native" name="platform_frameworks_native" remote="phh" />  
+  <project path="bionic" name="platform_bionic" remote="b2g_gsi" />
+  <project path="bootable/recovery" name="platform_bootable_recovery" remote="b2g_gsi" />
+  <project path="frameworks/native" name="platform_frameworks_native" remote="b2g_gsi" />  
   <project path="frameworks/base" name="platform_frameworks_base" remote="phh" />
-  <project path="frameworks/av" name="platform_frameworks_av" remote="phh" />
-  <project path="frameworks/opt/net/wifi" name="platform_frameworks_opt_net_wifi" remote="phh" />
-  <project path="frameworks/opt/telephony" name="platform_frameworks_opt_telephony" remote="phh" />
-  <project path="system/bpf" name="platform_system_bpf" remote="phh" />  
+  <project path="frameworks/av" name="platform_frameworks_av" remote="b2g_gsi" />
+  <project path="frameworks/opt/net/wifi" name="platform_frameworks_opt_net_wifi" remote="b2g_gsi" />
+  <project path="frameworks/opt/telephony" name="platform_frameworks_opt_telephony" remote="b2g_gsi" />
+  <project path="system/bpf" name="platform_system_bpf" remote="b2g_gsi" />  
   <project path="system/sepolicy" name="platform_system_sepolicy" remote="phh" />
-  <project path="system/libvintf" name="platform_system_libvintf" remote="phh" />
-  <project path="system/netd" name="platform_system_netd" remote="phh" />
-  <project path="external/selinux" name="platform_external_selinux" remote="phh" /> 
-  <project path="external/skia" name="platform_external_skia" remote="phh" />
-  <project path="packages/services/Telephony" name="platform_packages_services_Telephony" remote="phh" />
+  <project path="system/netd" name="platform_system_netd" remote="b2g_gsi" />
+  <project path="external/selinux" name="platform_external_selinux" remote="b2g_gsi" /> 
+  <project path="external/skia" name="platform_external_skia" remote="b2g_gsi" />
+  <project path="packages/services/Telephony" name="platform_packages_services_Telephony" remote="b2g_gsi" />
 
 
   <!-- add phh's patches based on kaiostech's repos -->
