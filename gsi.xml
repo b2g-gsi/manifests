@@ -63,10 +63,11 @@
   <project name="platform_system_vold" path="system/vold" remote="b2g_gsi" revision="gsi_gonk_android-10.0.0_r11" />
   
  <!-- add essential phh's GSI repos -->
- <project path="device/phh/treble" name="device_phh_treble" remote="b2g_gsi" revision="gonk-android-10.0" />
+ <project path="device/phh/treble" name="device_phh_treble" remote="b2g_gsi" revision="next" />
+ <!--   remove in next -->
  <project path="vendor/hardware_overlay" name="vendor_hardware_overlay" remote="phh" revision="pie" />
  <project path="vendor/vndk" name="vendor_vndk" remote="phh" revision="android-10.0" />
  <project path="vendor/vndk-tests" name="vendor_vndk-tests" remote="phh" revision="master" />
- <project path="vendor/interfaces" name="vendor_interfaces" remote="phh" revision="pie" />
+<!--  <project path="vendor/interfaces" name="vendor_interfaces" remote="phh" revision="pie" /> -->
   
 </manifest>
