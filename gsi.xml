@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <include name="base-q.xml"/>
+  
+  <!--  include some repos that belong to phh only (not AOSP) -->
   <remote name="phh" fetch="https://github.com/phhusson" />
   
   <!--   
-    use "b2g_gsi" organization to temporarily store repos which are "android-10.0.0_r11" （not android10-gsi）branch and add phh's GSI patches
+    use "b2g_gsi" organization to temporarily store some repos which are "android-10.0.0_r11" （not android10-gsi）branch
+    and has been added phh's GSI patches
   -->
   <remote name="b2g_gsi" fetch="https://github.com/b2g-gsi" revision="gonk_android-10.0.0_r11" />
   
@@ -31,7 +34,7 @@
   <remove-project name="platform/external/selinux" />
   <remove-project name="platform/external/skia" />
 
-  <!-- add phh's patches based on AOSP repos of "android-10.0.0_r11" branch -->
+  <!-- add phh's patches based on "android-10.0.0_r11" branch of AOSP's repos -->
   <project path="bionic" name="platform_bionic" remote="b2g_gsi" />
   <!--   <project path="bootable/recovery" name="platform_bootable_recovery" remote="b2g_gsi" /> -->
   <project path="frameworks/native" name="platform_frameworks_native" remote="b2g_gsi" />  
@@ -46,8 +49,7 @@
   <project path="external/skia" name="platform_external_skia" remote="b2g_gsi" />
   <!-- X  <project path="packages/services/Telephony" name="platform_packages_services_Telephony" remote="b2g_gsi" /> -->
 
-
-  <!-- add phh's patches based on kaiostech's repos of "gonk_android-10.0.0_r11" branch -->
+  <!-- add phh's patches based on "gonk_android-10.0.0_r11" branch of kaiostech's repos -->
   <project groups="kai" name="platform_build" path="build/make" remote="b2g_gsi" revision="gsi_gonk_android-10.0.0_r11" >
     <copyfile src="core/root.mk" dest="Makefile"/>
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
