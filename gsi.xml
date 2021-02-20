@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <include name="base-q.xml"/>
-  <remote name="phh" fetch="https://github.com/phhusson/" revision="android-10.0.0_r9-phh" />
-  <remote name="b2g_gsi" fetch="https://github.com/b2g-gsi/" revision=" gonk_android-10.0.0_r11" />
+  <remote name="phh" fetch="https://github.com/phhusson" />
+  <remote name="b2g_gsi" fetch="https://github.com/b2g-gsi" revision="gonk_android-10.0.0_r11" />
   
   <!--   Add back from AOSP manifest -->
   <project path="device/generic/common" name="device/generic/common" groups="pdk" />
@@ -46,7 +46,7 @@
 
 
   <!-- add phh's patches based on kaiostech's repos -->
-  <project groups="kai" name="platform_build" path="build/make" remote="b2g-gsi">
+  <project groups="kai" name="platform_build" path="build/make" remote="b2g_gsi" revision="gsi_gonk_android-10.0.0_r11" >
     <copyfile src="core/root.mk" dest="Makefile"/>
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
     <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default"/>
@@ -55,11 +55,11 @@
     <linkfile src="target" dest="build/target"/>
     <linkfile src="tools" dest="build/tools"/>
   </project>
-  <project name="platform_system_core" path="system/core" remote="b2g-gsi" />
-  <project name="platform_system_vold" path="system/vold" remote="b2g-gsi" />
+  <project name="platform_system_core" path="system/core" remote="b2g_gsi" revision="gsi_gonk_android-10.0.0_r11" />
+  <project name="platform_system_vold" path="system/vold" remote="b2g_gsi" revision="gsi_gonk_android-10.0.0_r11" />
   
  <!-- add phh's GSI -->
- <project path="device/phh/treble" name="device_phh_treble" remote="b2g-gsi" revision="gonk-android-10.0" />
+ <project path="device/phh/treble" name="device_phh_treble" remote="b2g_gsi" revision="gonk-android-10.0" />
  <project path="vendor/hardware_overlay" name="vendor_hardware_overlay" remote="phh" revision="pie" />
  <project path="vendor/vndk" name="vendor_vndk" remote="phh" revision="android-10.0" />
  <project path="vendor/vndk-tests" name="vendor_vndk-tests" remote="phh" revision="master" />
