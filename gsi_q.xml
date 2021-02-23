@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <include name="base-q.xml"/>
-  
+  <remote name="b2g_gsi" fetch="https://github.com/b2g-gsi" revision="gonk_android-10.0.0_r11" />
+
   <!--   Add back some repos from AOSP manifest -->
   <project path="device/generic/common" name="device/generic/common" groups="pdk" />
   <project path="prebuilts/abi-dumps/ndk" name="platform/prebuilts/abi-dumps/ndk" groups="pdk-fs" clone-depth="1" />
   <project path="prebuilts/abi-dumps/vndk" name="platform/prebuilts/abi-dumps/vndk" groups="pdk-fs" clone-depth="1" />
   <project path="prebuilts/vndk/v27" name="platform/prebuilts/vndk/v27" groups="pdk" clone-depth="1" />
   <project path="prebuilts/vndk/v28" name="platform/prebuilts/vndk/v28" groups="pdk" clone-depth="1" />
+
+  <remove-project name="platform_build"/>
+  <!-- add phh's patches based on kaiostech's repos -->
+  <project groups="kai" name="platform_build" path="build/make" remote="b2g_gsi" revision="gsi_q" >
+    <copyfile src="core/root.mk" dest="Makefile"/>
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default"/>
+    <linkfile src="core" dest="build/core"/>
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh"/>
+    <linkfile src="target" dest="build/target"/>
+    <linkfile src="tools" dest="build/tools"/>
+  </project>
   
 </manifest> 
